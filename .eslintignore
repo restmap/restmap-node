@@ -1,0 +1,4 @@
+dist/*
+exclude/*
+scripts/*
+**/*.js

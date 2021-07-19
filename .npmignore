@@ -1,0 +1,22 @@
+# folders
+
+.idea
+.github
+.nyc_output
+dist/tests
+exclude
+node_modules
+coverage
+src
+
+# files
+.eslintignore
+.eslintrc.js
+.gitignore
+.mocharc.js
+.npmignore
+.nycrc.json
+.prettierignore
+.prettierrc.js
+tsconfig.json
+tsconfig.production.json

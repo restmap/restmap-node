@@ -1,0 +1,17 @@
+# folders
+.nyc_output
+benchmark
+config
+coverage
+dist
+dist/exclude
+deploy
+exclude
+logs
+mochawesome-report
+node_modules
+output
+src/exclude
+
+# files
+yarn-error.log

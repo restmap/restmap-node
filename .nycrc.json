@@ -1,0 +1,11 @@
+{
+  "cache": true,
+  "branches": 100,
+  "lines": 100,
+  "functions": 100,
+  "statements": 100,
+  "check-coverage": true,
+  "reporter": ["text", "lcov"],
+  "exclude": ["**/*.d.ts"],
+  "include": ["src/app/**/*.ts"]
+}
