@@ -9,7 +9,7 @@ import { ANY, ARRAY, OBJECT, STRING } from "./constant";
  * @param data
  * @return {string}
  */
-const typeOf = function (data): string {
+export function typeOf(data): string {
     const objectConstructor = {}.constructor;
     const arrayConstructor = [].constructor;
     const stringConstructor = "test".constructor;

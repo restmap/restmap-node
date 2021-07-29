@@ -3,18 +3,11 @@
  */
 
 /**
- * reduce data with map
- * @param map
- * @param data
- */
-export function reduce(map: string, data: object) {}
-
-/**
  * parse map string to internal object
  * @param {string} map - original map string
  * @return {object} - internal map
  */
-export function parse(map: string): object {
+export default function (map: string): object {
     map = map.replace(/{/g, '{"');
     map = map.replace(/}/g, '":true}');
     map = map.replace(/{"/g, '":{"');
@@ -24,5 +17,9 @@ export function parse(map: string): object {
     map = map.replace(/}":true/g, "}");
     map = map.replace(/{"":true}/g, "{}");
 
-    return JSON.parse(map);
+    try {
+        return JSON.parse(map);
+    } catch (e) {
+        throw new Error("invalid map");
+    }
 }
