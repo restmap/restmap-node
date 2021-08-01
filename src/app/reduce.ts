@@ -31,10 +31,6 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
             // store the map value at the key
             const mvalue = imap[key];
 
-            console.log(
-                key + ":" + mvalue + ";" + typeOf(mvalue) + ";" + data[key],
-            );
-
             // if key does exist in data
             if (data[key] !== undefined) {
                 // if map value is object (map value will be either true or object)
