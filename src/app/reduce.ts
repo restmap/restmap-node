@@ -20,7 +20,8 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
         return newData;
 
         // it is an object
-    } else if (typeOf(data) == OBJECT) {
+    } else
+        if (typeOf(data) == OBJECT) {
         const newData = {};
 
         // keys of map
@@ -45,11 +46,13 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
                     else newData[key] = unavailable;
 
                     // if map value not object then copy the whole obj
-                } else newData[key] = data[key];
+                }
+                else newData[key] = data[key];
 
                 // else key does not exist in data
                 // store undefined object
-            } else newData[key] = unavailable;
+            }
+            else newData[key] = unavailable;
         });
 
         return newData;
