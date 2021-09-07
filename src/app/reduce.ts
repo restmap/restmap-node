@@ -14,14 +14,13 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
         // work on individual elements
         data.forEach((el) => {
             // parse and push each element in new array
-            newData.push(reduce(imap, el));
+            newData.push(reduce(imap, el, unavailable));
         });
 
         return newData;
 
         // it is an object
-    } else
-        if (typeOf(data) == OBJECT) {
+    } else {
         const newData = {};
 
         // keys of map
@@ -41,18 +40,16 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
                         typeOf(data[key]) == OBJECT ||
                         typeOf(data[key]) == ARRAY
                     )
-                        newData[key] = reduce(mvalue, data[key]);
+                        newData[key] = reduce(mvalue, data[key], unavailable);
                     // else data value is of other type than expected
                     else newData[key] = unavailable;
 
                     // if map value not object then copy the whole obj
-                }
-                else newData[key] = data[key];
+                } else newData[key] = data[key];
 
                 // else key does not exist in data
                 // store undefined object
-            }
-            else newData[key] = unavailable;
+            } else newData[key] = unavailable;
         });
 
         return newData;

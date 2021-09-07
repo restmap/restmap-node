@@ -116,4 +116,71 @@ describe("reduce", () => {
             });
         });
     });
+
+    describe("coverage tests", function () {
+        describe("data is array of objects", () => {
+            const data = [
+                { hello: { world: true } },
+                { hello: { world: false } },
+            ];
+            let map = "{hello}";
+            let result;
+
+            before(() => {
+                const imap = parse(map);
+                result = reduce(imap, data);
+            });
+
+            it("expect to be an array", function () {
+                expect(result).to.be.an("array");
+            });
+
+            it("expect array of length 2", function () {
+                expect(result).to.have.lengthOf(2);
+            });
+
+            it("expect items to be an object", function () {
+                expect(result[0]).to.be.an("object");
+            });
+
+            it("expect [1] to have 1 key", function () {
+                expect(result[1]).to.have.all.keys("hello");
+            });
+        });
+
+        describe("unavailable key test", function () {
+            const data = { hello: [{ world: false }] };
+            let map = "{hello{today,world{is}},now}";
+            let result;
+
+            before(() => {
+                const imap = parse(map);
+                result = reduce(imap, data, null);
+            });
+
+            it("expect to have 2 keys", function () {
+                expect(Object.keys(result)).to.have.lengthOf(2);
+            });
+
+            it("expect now to be null (unavailable)", function () {
+                expect(result.now).to.be.null;
+            });
+
+            it("expect hello to be an array", function () {
+                expect(result.hello).to.be.an("array");
+            });
+
+            it("expect hello to have length 1", function () {
+                expect(result.hello).to.have.lengthOf(1);
+            });
+
+            it("expect hello[0].today to be null (unavailable)", function () {
+                expect(result.hello[0].today).to.be.null;
+            });
+
+            it("expect hello[0].world to be null (unavailable)", function () {
+                expect(result.hello[0].world).to.be.null;
+            });
+        });
+    });
 });
