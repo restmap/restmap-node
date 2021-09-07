@@ -33,8 +33,8 @@ function mapping(data): string {
 
         // if data is of type array
     }
-    // else if type of data is array
-    else if (typeOf(data) == ARRAY) {
+    // else it is of type array
+    else {
         // if array size is great than 0
         if (data.length > 0) {
             // map the output & return
@@ -42,8 +42,6 @@ function mapping(data): string {
             // else return existing output
         } else return ",";
     }
-    // else return empty output
-    else return "{},";
 }
 
 /**

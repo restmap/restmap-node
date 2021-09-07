@@ -4,7 +4,7 @@ import generate from "../app/generate";
 import parse from "../app/parse";
 
 describe("generate", () => {
-    describe("+ve tests", function () {
+    describe("basic tests", function () {
         describe("given object", () => {
             describe("with 3 keys & no nesting", () => {
                 const data = { hello: true, world: true, today: true };
@@ -149,6 +149,25 @@ describe("generate", () => {
                         "{hello,world,today{great,cool{tomorrow}}}",
                     );
                 });
+            });
+        });
+    });
+
+    describe("coverage tests", function () {
+        describe("empty data array", () => {
+            const data = { hello: [] };
+            let result;
+
+            before(() => {
+                result = generate(data);
+            });
+
+            it("expect result to be string", function () {
+                expect(result).to.be.a("string");
+            });
+
+            it("expect result to be parseable", function () {
+                expect(parse(result)).to.be.ok;
             });
         });
     });
