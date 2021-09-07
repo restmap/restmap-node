@@ -1,13 +1,12 @@
-import {before, describe, it} from "mocha";
-import {expect} from "chai";
+import { before, describe, it } from "mocha";
+import { expect } from "chai";
 import parse from "../app/parse";
-import {typeOf} from "../app/utils/extra";
-import {OBJECT} from "../app/utils/constant";
+import { typeOf } from "../app/utils/extra";
+import { OBJECT } from "../app/utils/constant";
 
 describe("parse", () => {
-    describe("+ve tests", () => {
-        describe("given object with 5 keys", ()=>{
-
+    describe("basic tests", () => {
+        describe("given object with 5 keys", () => {
             describe("no nesting", () => {
                 const data = "{a,b,c,d,e}";
                 let result;
@@ -69,6 +68,19 @@ describe("parse", () => {
                     });
                 });
             });
-        })
+        });
+    });
+
+    describe("coverage tests", () => {
+        describe("invalid map", () => {
+            const map = "{hello,world{}";
+
+            it("expect parse to fail with 'invalid map' error ", function () {
+                const fn = () => {
+                    throw parse(map);
+                };
+                expect(fn).to.throw();
+            });
+        });
     });
 });
