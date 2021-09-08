@@ -15,11 +15,8 @@ import { ARRAY, OBJECT, STRING } from "./utils/constant";
  * @throws Error
  */
 function validateJSON(data: any, error: string) {
-    try {
-        JSON.parse(JSON.stringify(data));
-    } catch (err) {
-        throw new Error(error);
-    }
+    if (typeOf(data) === OBJECT || typeOf(data) === ARRAY) return;
+    else throw new Error(error);
 }
 
 /**
