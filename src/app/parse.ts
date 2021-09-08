@@ -20,6 +20,6 @@ export default function (map: string): object {
     try {
         return JSON.parse(map);
     } catch (e) {
-        throw new Error("invalid map");
+        throw new Error("invalid restmap");
     }
 }

@@ -18,9 +18,9 @@ export default function reduce(imap: object, data: any, unavailable: any = {}) {
         });
 
         return newData;
-
-        // it is an object
-    } else {
+    }
+    // it is an object
+    else {
         const newData = {};
 
         // keys of map
