@@ -79,10 +79,89 @@ describe("index.js - public methods", () => {
             });
         });
 
+        describe("escape keys", () => {
+            const data = {
+                hello: true,
+                hey: { world: true, is: true, great: true },
+            };
+            const restmap = "{-hello,hey{-world}}";
+            const result = reduceData(restmap, data);
+
+            it("expect to be object", function () {
+                expect(result).to.be.an("object");
+            });
+
+            it("expect to contain 1 key", function () {
+                expect(Object.keys(result)).to.have.lengthOf(1);
+            });
+
+            it("expect 'hello' value to not exist", function () {
+                expect(result).to.not.have.all.keys("hello");
+            });
+
+            it("expect 'hey' to contain 2 keys", function () {
+                expect(Object.keys(result["hey"])).to.have.lengthOf(2);
+            });
+        });
+
+        describe("custom escape key", () => {
+            const data = {
+                hello: true,
+                hey: { world: true, is: true, great: true },
+            };
+            const restmap = "{#hello,hey{#world,#is}}";
+            const result = reduceData(restmap, data, "#");
+
+            it("expect to be object", function () {
+                expect(result).to.be.an("object");
+            });
+
+            it("expect to contain 1 key", function () {
+                expect(Object.keys(result)).to.have.lengthOf(1);
+            });
+
+            it("expect 'hello' value to not exist", function () {
+                expect(result).to.not.have.all.keys("hello");
+            });
+
+            it("expect 'hey' to contain 1 key", function () {
+                expect(Object.keys(result["hey"])).to.have.lengthOf(1);
+            });
+        });
+
+        describe("custom escape key (invalid)", () => {
+            const data = {
+                hello: true,
+                hey: { world: true, is: true, great: true },
+            };
+            const restmap = "{#hello,hey{-world}}";
+            const result = reduceData(restmap, data, "#", 0);
+
+            it("expect to be object", function () {
+                expect(result).to.be.an("object");
+            });
+
+            it("expect to contain 1 key", function () {
+                expect(Object.keys(result)).to.have.lengthOf(1);
+            });
+
+            it("expect 'hello' value to not exist", function () {
+                expect(result).to.not.have.all.keys("hello");
+            });
+
+            it("expect 'hey' to contain only 1 key", function () {
+                expect(Object.keys(result["hey"])).to.have.lengthOf(1);
+            });
+
+            it("expect 'hey.-world' to exist with custom unavailable value", function () {
+                expect(result["hey"]).to.eql({ "-world": 0 });
+            });
+        });
+
         describe("custom unavailable key value", () => {
             const data = { hello: true, hey: false };
             const restmap = "{world}";
-            const result = reduceData(restmap, data, null);
+            const result = reduceData(restmap, data, "-", null);
 
             it("expect to be object", function () {
                 expect(result).to.be.an("object");

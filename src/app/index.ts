@@ -52,12 +52,14 @@ export function generateMap(data: any): string {
  * reduce data with respect to restmap
  * @param restmap - restmap string to reduce the data
  * @param data - the actual data to be reduced
+ * @param escape - the escape character use to identity keys to skip; default is -
  * @param unavailable - if a key is provided in restmap but doesn't exist in actual data
  *                      then this will be the value of that key; default is {}
  */
 export function reduceData(
     restmap: string,
     data: any,
+    escape: string = "-",
     unavailable: any = {},
 ): object {
     // check if restmap is a string
@@ -67,6 +69,6 @@ export function reduceData(
         // validate that data is a json object
         validateJSON(data, "data must be a JSON object/array");
         // reduce & return
-        return minimize(imap, data, unavailable);
+        return minimize(imap, data, escape, unavailable);
     } else throw new Error("restmap must be a string");
 }

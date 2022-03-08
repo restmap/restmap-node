@@ -155,7 +155,7 @@ describe("reduce", () => {
 
             before(() => {
                 const imap = parse(map);
-                result = reduce(imap, data, null);
+                result = reduce(imap, data, "-", null);
             });
 
             it("expect to have 2 keys", function () {
