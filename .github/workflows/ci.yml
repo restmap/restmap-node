@@ -10,7 +10,7 @@ on:
       - develop
 jobs:
   # test the code with different versions of node
-  ci-test:
+  ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:

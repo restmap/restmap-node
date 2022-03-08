@@ -20,3 +20,4 @@ src
 .prettierrc.js
 tsconfig.json
 tsconfig.production.json
+yarn.lock

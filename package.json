@@ -1,7 +1,7 @@
 {
   "name": "@restmap/node",
   "version": "0.1.0",
-  "description": "server-side library for restmap conversion/mapping",
+  "description": "server-side restmap library for reducing json",
   "types": "dist/app/index.d.ts",
   "main": "dist/app/index.js",
   "scripts": {
