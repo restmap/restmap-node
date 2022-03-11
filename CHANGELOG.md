@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/restmap/restmap-node/compare/v0.1.0...v0.1.1) (2022-03-11)
+
+
+### Documentation
+
+* added CI/CD badge + playground link ([ff9c3a1](https://github.com/restmap/restmap-node/commit/ff9c3a15e0a6b0636e9fa793e55f65f40b04e05a))
+
 ## 0.1.0 (2022-03-10)
 
 
