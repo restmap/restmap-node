@@ -1,13 +1,14 @@
 ### restmap
-![enter image description here](https://avatars.githubusercontent.com/u/80530774?s=200&v=4)
-![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555) ![NPM](https://img.shields.io/npm/l/error-key)     [![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/dawnimpulse/error-key) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)](https://conventionalcommits.org)
+![logo](https://avatars.githubusercontent.com/u/80530774?s=200)
+
+[![npm](https://img.shields.io/npm/v/@restmap/node)](https://npmjs.com/package/@restmap/node)  ![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555) [![CI](https://github.com/restmap/restmap-node/actions/workflows/ci.yml/badge.svg)](https://github.com/restmap/restmap-node/actions/workflows/ci.yml)  [![codecov](https://codecov.io/gh/restmap/restmap-node/branch/deploy/graph/badge.svg)](https://codecov.io/gh/restmap/restmap-node)   [![Buy us a tree](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=Treeware&query=%24.total&url=https%3A%2F%2Fpublic.offset.earth%2Fusers%2Ftreeware%2Ftrees)](https://plant.treeware.earth/dawnimpulse/restmap) ![NPM](https://img.shields.io/npm/l/error-key) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)](https://conventionalcommits.org)
 
 ### Goal
 To create a simple way to query only the required data from a **Rest API** without relying on lot of external tools or code.
 
 > This project is inspired from GraphQl
 
-But unlike graphql which is itself a whole new query language, **restmap** aims to create a much simpler approach where you just write a simple string which is used to parse and minify the said data.
+But unlike graphql which is itself a whole new query language, **restmap** aims to create a much simpler approach (for reducing data) where you just write a simple string which is used to parse and minify the data.
 
 ### Why replace GraphQl ?
 
@@ -16,15 +17,16 @@ In no way restmap is replacement for GraphQl which is a very extensive query lan
 > Restmap solely aims to limit your data without lots of development time on fronend/backend. All you need is just few lines of code on server side
 
 * Graphql requires you to configure/change a lot of your frontend & backend.
-* For Graphql in frontend specially you need a new way to consume data by configuring a new library other than existing HTTP / REST api which put additional strain on frontend devs.
+* For Graphql in frontend specially you need a new way to consume data by configuring a new library other than existing REST api which put additional strain on frontend devs.
 
 ### Working of Restmap ?
 
 * Restmap simply works in existing api by making a slight tweak on server side
 * Just import the library and call the reduce method on final output of your api
-* Clients can send **restmap string** via header, query or body ( however you wish to have it on server side)
+* Clients can send **restmap string** via header, query or body (however you wish to have it on server side)
 
 ### Example
+> Checkout the [Playground](https://restmap.vercel.app/playground)
 #### Example 1
 ```
 {
@@ -129,7 +131,7 @@ which will return only the required data
 #### Generating the map
 > `generateMap()`
 
-To be honest, you would not never need this, since the **restmap string** is very easy to write !! But just in case you wish to know what a *map should look like for a data*
+To be honest, **restmap string** is very easy to write !! Although I agree that in complex data with lots of keys and nesting it can be a big trouble. This function is all you need in that case. To make it more easier for you, you can do this on web via [Playground](https://restmap.web.app/playground)
 
 |params||description|
 |--|--|--|
@@ -153,6 +155,9 @@ I am always available for QAs. You can reach via following -
 
 + Twitter - [@dawnimpulse](https://twitter.com/dawnimpulse)
 + Email - [dawnimpulse@gmail.com](mailto:dawnimpulse@gmail.com)
+
+### Treeware
+This package is [Treeware](https://treeware.earth). If you use it in production, then we ask that you [**buy the world a tree**](https://plant.treeware.earth/dawnimpulse/restmap) to thank us for our work. By contributing to the Treeware forest you’ll be creating employment for local families and restoring wildlife habitats.
 
 ### License
 I used a very open license which grants you to use this libary in personal/commerical use without any fees/declaration etc. (but don't sell it claiming as your own)
